@@ -1468,7 +1468,7 @@
 		)
 		(uuid "cf2ebdad-6340-451f-8f31-eee00443103a")
 	)
-	(global_label "LED 1"
+	(global_label "LED 2"
 		(shape input)
 		(at 140.97 90.17 0)
 		(fields_autoplaced yes)
@@ -1490,7 +1490,7 @@
 			)
 		)
 	)
-	(global_label "LED 1"
+	(global_label "LED 3"
 		(shape input)
 		(at 140.97 86.36 0)
 		(fields_autoplaced yes)
@@ -1776,7 +1776,7 @@
 			)
 		)
 	)
-	(global_label "LED 1"
+	(global_label "LED 4"
 		(shape input)
 		(at 140.97 82.55 0)
 		(fields_autoplaced yes)
