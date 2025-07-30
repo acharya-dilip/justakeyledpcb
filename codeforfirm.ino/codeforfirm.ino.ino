@@ -20,12 +20,13 @@ void setup() {
   for(int i=0; i<4;i++){
     pinMode(swPins[i],INPUT_PULLUP);
   }
-
 pinMode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
-pinMode(LED1,OUTPUT); //The LED Ladies
-pinMode(LED2,OUTPUT);
-pinMode(LED3,OUTPUT);
-pinMode(LED4,OUTPUT);
+
+for(int i=0;i<0;i++){ //Compiling the Led Ladies
+  pinMode(ledPins[i],OUTPUT);
+}
+
+
 }
 
 void loop() { // Main Loop Function of firmware
