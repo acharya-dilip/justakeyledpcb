@@ -9,7 +9,7 @@ int LED2 = D8;
 int LED3 = D9;
 int LED4 = D10;
 const int ledPins[]={LED1,LED2,LED3,LED4};
-int butSeq[4];
+int butSeq[20];
 bool butPressMatch=true;
 bool butStat=false;
 bool seqStatus=false;
@@ -55,6 +55,7 @@ void gameStart(){
 getrandobutseq();
 playbutSeq();
 if(!checkSequence()){
+  inc = 0;
   digitalWrite(BUZ,HIGH);
   delay(5000);
   digitalWrite(BUZ,LOW);
@@ -68,27 +69,22 @@ if(!checkSequence()){
 bool checkSequence() {//This Function checks if the button pressed is in the right order
   bool match = true;
 
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4+inc; i++) {
     int pressed = waitForButton();  //Gets the value of the pressed button
-
-    Serial.print("Pressed: ");
-    Serial.print(pressed);
-    Serial.print(" Expected: ");
-    Serial.println(butSeq[i]);
 
     if (pressed != butSeq[i]) {
       match = false;
       break; 
     }
   }
-
+  inc=inc+1;
   return match;
 }
 
 int waitForButton() {//THis Function checks if a switch is pressed and returns the pressed buttons value
   unsigned long waitTimebut=millis();
   while (millis() - waitTimebut > 1000) {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4+inc; i++) {
       if (digitalRead(swPins[i]) == LOW) {
         digitalWrite(BUZ,HIGH);
         delay(200);
@@ -103,7 +99,7 @@ int waitForButton() {//THis Function checks if a switch is pressed and returns t
 }
 
 void playbutSeq(){ //This thing lights up the LED's in random order
-  for(int i=0; i<4; i++){
+  for(int i=0; i<4+inc; i++){
     switch (butSeq[i]){
       case 1:
       digitalWrite(LED1,HIGH);
@@ -141,7 +137,7 @@ void playbutSeq(){ //This thing lights up the LED's in random order
 }
 
 void getrandobutseq() { //Gives me 4 numbers from 1 to 4 completely random and can have repition
-for (int i = 0; i < 4; i++) {
+for (int i = 0; i < 4+inc; i++) {
     butSeq[i] = random(1, 5);  
   }
 }
