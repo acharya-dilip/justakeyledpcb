@@ -17,12 +17,12 @@ long startTime = millis();
 long onCallsec = 0;
 
 void setup() {
-  for(int i=0; i<4;i++){
+  for(int i=0; i<4;i++){//PinModing the SWitched
     pinMode(swPins[i],INPUT_PULLUP);
   }
 pinMode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
 
-for(int i=0;i<0;i++){ //Compiling the Led Ladies
+for(int i=0;i<0;i++){ //PinModing the LED LAdies
   pinMode(ledPins[i],OUTPUT);
 }
 
