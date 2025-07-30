@@ -18,10 +18,10 @@ long startTime = millis();
 long onCallsec = 0;
 
 void setup() {
-pinmode(SW1,INPUT_PULLUP);
-pinmode(SW2,INPUT_PULLUP);
-pinmode(SW3,INPUT_PULLUP);
-pinmode(SW4,INPUT_PULLUP);
+  for(int i=0; i<4;i++){
+    pinmode(swPins[i],INPUT_PULLUP);
+  }
+
 pinmode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
 pinmode(LED1,Output); //The LED Ladies
 pinmode(LED2,Output);
@@ -29,7 +29,7 @@ pinmode(LED3,Output);
 pinmode(LED4,Output);
 }
 
-void loop() {
+void loop() { // Main Loop Function of firmware
  randomSeed(analogRead(A0));
  long onCallsec;
  if (digitalRead(SW1)== LOW && digitalRead(SW4) == LOW){
