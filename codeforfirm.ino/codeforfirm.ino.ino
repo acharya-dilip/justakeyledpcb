@@ -78,7 +78,8 @@ bool checkSequence() {//This Function checks if the button pressed is in the rig
 }
 
 int waitForButton() {//THis Function checks if a button is pressed and returns the pressed buttons value
-  while (true) {
+  unsigned long waitTimebut=millis();
+  while (millis() - startTime < 1000) {
     for (int i = 0; i < 4; i++) {
       if (digitalRead(swPins[i]) == LOW) {
         digitalWrite(BUZ,HIGHT);
@@ -90,6 +91,7 @@ int waitForButton() {//THis Function checks if a button is pressed and returns t
       }
     }
   }
+  return 0;
 }
 
 void playbutSeq(){ //This thing lights up the buttons in random order
