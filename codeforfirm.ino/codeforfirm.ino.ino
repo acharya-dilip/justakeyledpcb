@@ -2,12 +2,21 @@ int SW1 = D1;
 int SW2 = D2;
 int SW3 = D3;
 int SW4 = D4;
+const int swPins[]={SW1,SW2,SW3,SW4};
 int BUZ = D5;
 int LED1 = D7;
 int LED2 = D8;
 int LED3 = D9;
 int LED4 = D10;
+const ledPins[]={LED1,LED2,LED3,LED4};
 int butSeq[4];
+unsigned int delay=200;
+bool butPressMatch=true;
+bool butStat=false;
+bool seqStatus=false;
+long startTime = millis();
+long onCallsec = 0;
+
 void setup() {
 pinmode(SW1,INPUT_PULLUP);
 pinmode(SW2,INPUT_PULLUP);
@@ -18,12 +27,6 @@ pinmode(LED1,Output); //The LED Ladies
 pinmode(LED2,Output);
 pinmode(LED3,Output);
 pinmode(LED4,Output);
-unsigned int delay=200;
-bool butPressMatch=true;
-bool butStat=false;
-bool seqStatus=false;
-long startTime = millis();
-
 }
 
 void loop() {
@@ -35,6 +38,7 @@ void loop() {
     butStat=true;
     }
      elseif(millis()-onCallsec > 5000){
+      onCallsec=0;
       gameStart();
       butStat=false;
     }
@@ -53,6 +57,9 @@ if(!checksequence()){
   digitalWrite(BUZ,HIGH);
   delay(5000);
   digitalWrite(BUZ,LOW);
+  for (int i=1;i<0;i++){
+  digitalWrite(ledPins[i],HIGH)
+  }
 }
 
 }
@@ -70,31 +77,31 @@ bool checkSequence() {//This Function checks if the button pressed is in the rig
 
     if (pressed != butSeq[i]) {
       match = false;
-      break;  // Wrong input — exit early
+      break; 
     }
   }
 
   return match;
 }
 
-int waitForButton() {//THis Function checks if a button is pressed and returns the pressed buttons value
+int waitForButton() {//THis Function checks if a switch is pressed and returns the pressed buttons value
   unsigned long waitTimebut=millis();
-  while (millis() - startTime < 1000) {
+  while (millis() - waitTimebut > 1000) {
     for (int i = 0; i < 4; i++) {
       if (digitalRead(swPins[i]) == LOW) {
         digitalWrite(BUZ,HIGHT);
         delay(delay);
         digitalWrite(BUZ,LOW);
-        delay(200);  // debounce
-        while (digitalRead(swPins[i]) == LOW);  // wait for release
-        return i + 1;  // return 1-based button number
+        delay(200);  
+        while (digitalRead(swPins[i]) == LOW); //waits for switch release
+        return i + 1;  // return 1-based switch number
       }
     }
   }
   return 0;
 }
 
-void playbutSeq(){ //This thing lights up the buttons in random order
+void playbutSeq(){ //This thing lights up the LED's in random order
   for(int i=0; i<4; i++){
     switch (butSeq[i]){
       case 1:
@@ -132,7 +139,7 @@ void playbutSeq(){ //This thing lights up the buttons in random order
   }
 }
 
-void getrandobutseq() { //Gives me 4 numbers from 1 to 4 completely random with repetition
+void getrandobutseq() { //Gives me 4 numbers from 1 to 4 completely random and can have repition
 for (int i = 0; i < 4; i++) {
     butSeq[i] = random(1, 5);  
   }
