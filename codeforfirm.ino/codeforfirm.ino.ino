@@ -19,7 +19,7 @@ pinmode(LED2,Output);
 pinmode(LED3,Output);
 pinmode(LED4,Output);
 randomSeed(analogRead(A0));
-
+unsigned int delay=200;
 bool butStat=false;
 long startTime = millis();
 
@@ -44,7 +44,45 @@ void loop() {
 
 void gameStart(){
 getrandobutseq();
+playbutSeq();
+}
 
+void playbutSeq(){
+  for(int i=0; i<4; i++){
+    switch (butSeq[i]){
+      case 1:
+      digitalWrite(LED1,HIGH);
+      digitalWrite(BUZ,HIGH);
+      delayMicroseconds(delay);
+      digitalWrite(BUZ,HIGH);
+      digitalWrite(LED1,LOW);
+      break;
+      
+      case 2:
+      digitalWrite(LED1,HIGH);
+      digitalWrite(BUZ,HIGH);
+      delayMicroseconds(delay);
+      digitalWrite(BUZ,HIGH);
+      digitalWrite(LED1,LOW);
+      break;
+
+      case 3:
+      digitalWrite(LED1,HIGH);
+      digitalWrite(BUZ,HIGH);
+      delayMicroseconds(delay);
+      digitalWrite(BUZ,HIGH);
+      digitalWrite(LED1,LOW);
+      break;
+
+      case 4:
+      digitalWrite(LED1,HIGH);
+      digitalWrite(BUZ,HIGH);
+      delayMicroseconds(delay);
+      digitalWrite(BUZ,HIGH);
+      digitalWrite(LED1,LOW);
+      break;
+    }
+  }
 }
 
 void getrandobutseq() { //Gives me 4 numbers from 1 to 4 completely random with repetition
