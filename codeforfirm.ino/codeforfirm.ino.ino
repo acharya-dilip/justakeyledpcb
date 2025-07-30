@@ -8,9 +8,8 @@ int LED1 = D7;
 int LED2 = D8;
 int LED3 = D9;
 int LED4 = D10;
-const ledPins[]={LED1,LED2,LED3,LED4};
+const int ledPins[]={LED1,LED2,LED3,LED4};
 int butSeq[4];
-unsigned int delay=200;
 bool butPressMatch=true;
 bool butStat=false;
 bool seqStatus=false;
@@ -19,14 +18,14 @@ long onCallsec = 0;
 
 void setup() {
   for(int i=0; i<4;i++){
-    pinmode(swPins[i],INPUT_PULLUP);
+    pinMode(swPins[i],INPUT_PULLUP);
   }
 
-pinmode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
-pinmode(LED1,Output); //The LED Ladies
-pinmode(LED2,Output);
-pinmode(LED3,Output);
-pinmode(LED4,Output);
+pinMode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
+pinMode(LED1,OUTPUT); //The LED Ladies
+pinMode(LED2,OUTPUT);
+pinMode(LED3,OUTPUT);
+pinMode(LED4,OUTPUT);
 }
 
 void loop() { // Main Loop Function of firmware
@@ -37,12 +36,12 @@ void loop() { // Main Loop Function of firmware
     onCallsec=millis();
     butStat=true;
     }
-     elseif(millis()-onCallsec > 5000){
+    else if(millis()-onCallsec > 5000){
       onCallsec=0;
       gameStart();
       butStat=false;
     }
-      else{
+    else{
       butStat=false;
     }
   }
@@ -53,12 +52,12 @@ void loop() { // Main Loop Function of firmware
 void gameStart(){
 getrandobutseq();
 playbutSeq();
-if(!checksequence()){
+if(!checkSequence()){
   digitalWrite(BUZ,HIGH);
   delay(5000);
   digitalWrite(BUZ,LOW);
   for (int i=1;i<0;i++){
-  digitalWrite(ledPins[i],HIGH)
+  digitalWrite(ledPins[i],HIGH);
   }
 }
 
@@ -73,7 +72,7 @@ bool checkSequence() {//This Function checks if the button pressed is in the rig
     Serial.print("Pressed: ");
     Serial.print(pressed);
     Serial.print(" Expected: ");
-    Serial.println(pattern[i]);
+    Serial.println(butSeq[i]);
 
     if (pressed != butSeq[i]) {
       match = false;
@@ -89,8 +88,8 @@ int waitForButton() {//THis Function checks if a switch is pressed and returns t
   while (millis() - waitTimebut > 1000) {
     for (int i = 0; i < 4; i++) {
       if (digitalRead(swPins[i]) == LOW) {
-        digitalWrite(BUZ,HIGHT);
-        delay(delay);
+        digitalWrite(BUZ,HIGH);
+        delay(200);
         digitalWrite(BUZ,LOW);
         delay(200);  
         while (digitalRead(swPins[i]) == LOW); //waits for switch release
@@ -107,7 +106,7 @@ void playbutSeq(){ //This thing lights up the LED's in random order
       case 1:
       digitalWrite(LED1,HIGH);
       digitalWrite(BUZ,HIGH);
-      delayMicroseconds(delay);
+      delayMicroseconds(200);
       digitalWrite(BUZ,HIGH);
       digitalWrite(LED1,LOW);
       break;
@@ -115,7 +114,7 @@ void playbutSeq(){ //This thing lights up the LED's in random order
       case 2:
       digitalWrite(LED1,HIGH);
       digitalWrite(BUZ,HIGH);
-      delayMicroseconds(delay);
+      delayMicroseconds(200);
       digitalWrite(BUZ,HIGH);
       digitalWrite(LED1,LOW);
       break;
@@ -123,7 +122,7 @@ void playbutSeq(){ //This thing lights up the LED's in random order
       case 3:
       digitalWrite(LED1,HIGH);
       digitalWrite(BUZ,HIGH);
-      delayMicroseconds(delay);
+      delayMicroseconds(200);
       digitalWrite(BUZ,HIGH);
       digitalWrite(LED1,LOW);
       break;
@@ -131,7 +130,7 @@ void playbutSeq(){ //This thing lights up the LED's in random order
       case 4:
       digitalWrite(LED1,HIGH);
       digitalWrite(BUZ,HIGH);
-      delayMicroseconds(delay);
+      delayMicroseconds(200);
       digitalWrite(BUZ,HIGH);
       digitalWrite(LED1,LOW);
       break;
