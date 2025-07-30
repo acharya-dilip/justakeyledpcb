@@ -15,6 +15,7 @@ bool butStat=false;
 bool seqStatus=false;
 long startTime = millis();
 long onCallsec = 0;
+int inc;
 
 void setup() {
   for(int i=0; i<4;i++){//PinModing the SWitched
