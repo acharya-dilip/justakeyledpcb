@@ -47,8 +47,15 @@ void loop() { // Main Loop Function of firmware
       butStat=false;
     }
   }
+  if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){
+    naynayniganay();
+  }
   
   delay(500);
+}
+
+void naynayniganay(){ // Plays the nay nay niga nay beats from the buzzer
+
 }
 
 void gameStart(){
@@ -133,6 +140,9 @@ void playbutSeq(){ //This thing lights up the LED's in random order
       digitalWrite(LED1,LOW);
       break;
     }
+
+
+
   }
 }
 
