@@ -1,0 +1,16 @@
+﻿pos_x,pos_y,rotation,side,designator,mpn,pack,footprint,value,mount_type
+161.5,-50.0,-90.0,top,BZ1,,,Buzzer_12x9.5RM7.6,Buzzer,tht
+150.5,-58.23,90.0,top,D1,,None,LEDRD254W57D500H1070,L08R5000Q1,tht
+143.0,-58.23,90.0,top,D2,,None,LEDRD254W57D500H1070,L08R5000Q1,tht
+135.5,-58.23,90.0,top,D3,,None,LEDRD254W57D500H1070,L08R5000Q1,tht
+128.0,-58.23,90.0,top,D4,,None,LEDRD254W57D500H1070,L08R5000Q1,tht
+143.0,-49.12,90.0,top,R1,,,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,R,tht
+131.0,-49.31,90.0,top,R2,,,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,R,tht
+135.0,-49.12,90.0,top,R3,,,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,R,tht
+139.0,-49.12,90.0,top,R4,,,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,R,tht
+127.0,-49.12,90.0,top,R5,,,R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,R,tht
+104.42,-70.38,90.0,top,SW1,,,SW_Cherry_MX_1.00u_PCB,SW_Push,tht
+123.5,-70.46,90.0,top,SW2,,,SW_Cherry_MX_1.00u_PCB,SW_Push,tht
+142.46,-70.46,90.0,top,SW3,,,SW_Cherry_MX_1.00u_PCB,SW_Push,tht
+161.46,-70.46,90.0,top,SW4,,,SW_Cherry_MX_1.00u_PCB,SW_Push,tht
+110.88,-51.62,90.0,top,U1,,,XIAO-RP2040-DIP,XIAO-RP2040-DIP,smt
