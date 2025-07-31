@@ -18,16 +18,25 @@ long onCallsec = 0;
 int inc;
 
 void setup() {
-  for(int i=0; i<4;i++){//PinModing the SWitched
-    pinMode(swPins[i],INPUT_PULLUP);
-  }
-pinMode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
-
-for(int i=0;i<0;i++){ //PinModing the LED LAdies
-  pinMode(ledPins[i],OUTPUT);
+ swPinset();
+ ledPinset();
+ buzPinset();
 }
 
+void buzPinset(){ //Pinmodes the Buzzer
+pinMode(BUZ,OUTPUT); //Buuz Buzz Bad Boi
+}
 
+void swPinset(){//PinModes the SWitched
+ for(int i=0; i<4;i++){
+    pinMode(swPins[i],INPUT_PULLUP);
+  }
+}
+
+void ledPinset(){ //PinModes the LED LAdies
+  for(int i=0;i<0;i++){ 
+  pinMode(ledPins[i],OUTPUT);
+  }
 }
 
 void loop() { // Main Loop Function of firmware
@@ -47,22 +56,22 @@ void loop() { // Main Loop Function of firmware
       butStat=false;
     }
   }
-  if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
+  else if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
     sos();
   }
     
-    if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ 
+    else if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ 
     dingusbongus();
   }
 
-  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){//Checks if all the switches are pressed
+  else if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){//Checks if all the switches are pressed
     asecretmsg();
   }
   
   delay(500);
 }
 
-void dingusbongus(){
+void dingusbongus(){//Plays the word dingusbongus in morse code lol
   dash(); dot(); dot(); 
   dot(); dot();
   dash(); dot();
@@ -97,6 +106,18 @@ void asecretmsg(){ //DONOT DECIPHER THIS MESSAGE PLEASEEEE FOR THE SAKE OF PRIVA
   
 }
 
+void ledlightup(){//This thing lights up all the LED's
+  for(int i=0;i<0;i++){ //Lighting up the LED LAdies
+  digitalWrite(ledPins[i],HIGH);
+  }
+}
+
+void ledlightdown(){//This things turns off all the LED's
+  for(int i=0;i<0;i++){ //Lighting down the LED LAdies
+  digitalWrite(ledPins[i],LOW);
+}
+}
+
 void sos(){ // Broadcasts the universal SOS signal in morse
 dot();dot();dot();
 dash();dash();dash();
@@ -104,27 +125,30 @@ dash();dash();dash();
 
 void dot(){ //Broadcasts the Dot signal from morse at a 200ms=1 unit delay
 digitalWrite(BUZ,HIGH);
+ledlightup();
 delay(200); 
+ledlightdown();
 digitalWrite(BUZ,LOW);
 }
 
 void dash(){ //Broadcasts the Dash Singal from morse at 3 units = 600ms delay
 digitalWrite(BUZ,HIGH);
-delay(600); 
+ledlightup();
+delay(600);
+ledlightdown(); 
 digitalWrite(BUZ,LOW);
 }
 
-void gameStart(){
+void gameStart(){//Starts the memory game
 getrandobutseq();
 playbutSeq();
 if(!checkSequence()){
   inc = 0;
   digitalWrite(BUZ,HIGH);
+  ledlightup();
   delay(5000);
   digitalWrite(BUZ,LOW);
-  for (int i=1;i<0;i++){
-  digitalWrite(ledPins[i],HIGH);
-  }
+  ledlightdown();
 }
 
 }
