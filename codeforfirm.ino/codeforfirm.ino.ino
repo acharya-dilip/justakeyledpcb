@@ -50,11 +50,31 @@ void loop() { // Main Loop Function of firmware
   if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
     sos();
   }
-  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){
+    
+    if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ 
+    dingusbongus();
+  }
+
+  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){//Checks if all the switches are pressed
     asecretmsg();
   }
   
   delay(500);
+}
+
+void dingusbongus(){
+  dash(); dot(); dot(); 
+  dot(); dot();
+  dash(); dot();
+  dash(); dash(); dot();
+  dot(); dot(); dash();
+  dot(); dot(); dot();
+  dash(); dot(); dot(); dot();
+  dash(); dash(); dash();
+  dash(); dot();
+  dash(); dash(); dot();
+  dot();dot(); dash();
+  dot();dot();dot();
 }
 
 void asecretmsg(){ //DONOT DECIPHER THIS MESSAGE PLEASEEEE FOR THE SAKE OF PRIVACY!!!
