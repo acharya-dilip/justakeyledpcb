@@ -50,7 +50,7 @@ void loop() { // Main Loop Function of firmware
   if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
     sos();
   }
-  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW &&){
+  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){
     asecretmsg();
   }
   
