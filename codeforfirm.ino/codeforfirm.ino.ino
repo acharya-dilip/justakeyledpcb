@@ -48,14 +48,27 @@ void loop() { // Main Loop Function of firmware
     }
   }
   if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){
-    naynayniganay();
+    sos();
   }
   
   delay(500);
 }
 
-void naynayniganay(){ // Plays the nay nay niga nay beats from the buzzer
+void sos(){ // Broadcasts the universal SOS signal in morse
+dot();dot();dot();
+dash();dash();dash();
+}
 
+void dot(){ //Broadcasts the Dot signal from morse at a 200ms=1 unit delay
+digitalWrite(BUZ,HIGH);
+delay(200); 
+digitalWrite(BUZ,LOW);
+}
+
+void dash(){ //Broadcasts the Dash Singal from morse at 3 units = 600ms delay
+digitalWrite(BUZ,HIGH);
+delay(600); 
+digitalWrite(BUZ,LOW);
 }
 
 void gameStart(){
