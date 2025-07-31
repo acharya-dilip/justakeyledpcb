@@ -2,13 +2,13 @@ int SW1 = D1;
 int SW2 = D2;
 int SW3 = D3;
 int SW4 = D4;
-const int swPins[]={SW1,SW2,SW3,SW4};
+const int swPins[]={SW1,SW2,SW3,SW4}; //Declaring Switch Pins as an array for easier use cases
 int BUZ = D5;
 int LED1 = D7;
 int LED2 = D8;
 int LED3 = D9;
 int LED4 = D10;
-const int ledPins[]={LED1,LED2,LED3,LED4};
+const int ledPins[]={LED1,LED2,LED3,LED4}; // Declaring ledPins as an array for easier use cases
 int butSeq[20];
 bool butPressMatch=true;
 bool butStat=false;
@@ -33,7 +33,7 @@ for(int i=0;i<0;i++){ //PinModing the LED LAdies
 void loop() { // Main Loop Function of firmware
  randomSeed(analogRead(A0));
  long onCallsec;
- if (digitalRead(SW1)== LOW && digitalRead(SW4) == LOW){
+ if (digitalRead(SW1)== LOW && digitalRead(SW4) == LOW){//Checks if 1st and 4th switches are pressed
     if(!butStat){
     onCallsec=millis();
     butStat=true;
@@ -47,7 +47,7 @@ void loop() { // Main Loop Function of firmware
       butStat=false;
     }
   }
-  if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){
+  if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
     sos();
   }
   
