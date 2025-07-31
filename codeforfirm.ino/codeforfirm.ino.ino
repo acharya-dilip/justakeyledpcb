@@ -60,8 +60,11 @@ void loop() { // Main Loop Function of firmware
     sos();
   }
     
-    else if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ 
+    else if(digitalRead(SW1)==LOW && digitalRead(SW3)==LOW){ 
     dingusbongus();
+  }
+    else if(digitalRead(SW2)==LOW && digitalRead(SW4)==LOW){ 
+    //you can add smth here
   }
 
   else if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW){//Checks if all the switches are pressed
