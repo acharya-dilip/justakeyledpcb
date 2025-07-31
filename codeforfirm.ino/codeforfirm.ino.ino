@@ -50,8 +50,31 @@ void loop() { // Main Loop Function of firmware
   if(digitalRead(SW2)==LOW && digitalRead(SW3)==LOW){ // Checks if 2nd and third switch are pressed
     sos();
   }
+  if(digitalRead(SW1)==LOW && digitalRead(SW2)==LOW && digitalRead(SW3)==LOW && digitalRead(SW4)==LOW &&){
+    asecretmsg();
+  }
   
   delay(500);
+}
+
+void asecretmsg(){ //DONOT DECIPHER THIS MESSAGE PLEASEEEE FOR THE SAKE OF PRIVACY!!!
+  dot(); dot();
+
+  dot(); dash(); dot(); dot();
+  dash(); dash(); dash();
+  dot(); dot(); dot(); dash();
+  dot();
+  
+  dash(); dot(); dash(); dash();
+  dash(); dash(); dash();
+  dot(); dot(); dash();
+
+  dot(); dash(); dash(); dot();
+  dot(); dash();
+  dot(); dash(); dot(); dot();
+  dot(); dash(); dot(); dot();
+  dot(); dot(); dash();
+  
 }
 
 void sos(){ // Broadcasts the universal SOS signal in morse
