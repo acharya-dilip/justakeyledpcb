@@ -16,8 +16,8 @@ bool seqStatus=false;
 long startTime = millis();
 long onCallsec = 0;
 int inc;
-
-void setup() {
+//THis THANG IS FINALLY DONE!!!
+void setup() { 
  swPinset();
  ledPinset();
  buzPinset();
@@ -60,10 +60,10 @@ void loop() { // Main Loop Function of firmware
     sos();
   }
     
-    else if(digitalRead(SW1)==LOW && digitalRead(SW3)==LOW){ 
+    else if(digitalRead(SW1)==LOW && digitalRead(SW3)==LOW){ //checks if 1st and 3rd switch are pressed
     dingusbongus();
   }
-    else if(digitalRead(SW2)==LOW && digitalRead(SW4)==LOW){ 
+    else if(digitalRead(SW2)==LOW && digitalRead(SW4)==LOW){ //checks if 2nd and 4th switch are pressed
     //you can add smth here
   }
 
@@ -188,7 +188,7 @@ int waitForButton() {//THis Function checks if a switch is pressed and returns t
   return 0;
 }
 
-void playbutSeq(){ //This thing lights up the LED's in random order
+void playbutSeq(){ //This thing lights up the LED's in random generated sequential order
   for(int i=0; i<4+inc; i++){
     switch (butSeq[i]){
       case 1:
